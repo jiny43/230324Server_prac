@@ -1,0 +1,14 @@
+
+
+파일구조
+app.js =  meadowlark.js
+
+views dir
+main layout 
+ -home  
+ -about
+ -404
+ -500
+
+public 
+비어있음
