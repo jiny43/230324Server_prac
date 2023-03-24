@@ -3,6 +3,14 @@
 const express = require('express')
 const expressHandlebars =require('express-handlebars')
 const app = express()
+//3.3.3 포춘쿠키 만들기
+const fortunes = [
+  "양자리",
+  "사수자리",
+  "천칭자리"
+]
+
+
 //static 미들웨어 추가
 app.use(express.static(__dirname + '/public'))
 //핸들바 뷰 엔진 설정
@@ -13,7 +21,10 @@ app.set('view engine', 'handlebars')
 const port =process.env.PORT || 3000
 //홈페이지와 어바웃 페이지에서 사용할 경로를 추가
 app.get('/',(req,res)=> res.render('home'))
-app.get('/about',(req,res)=>res.render('about'))
+app.get('/about',(req,res)=>{
+const randomFortune = fortunes[Math.floor(Math.random()*fortunes.length)]
+res.render('about',{fortunes: randomFortune})
+})
 // custom 404 page
 
 app.use((req,res)=>{
@@ -31,3 +42,4 @@ app.use((err,req,res,next)=>{
 app.listen(port, () =>console.log(
   `Express started on http://localhost:${port};` +
   `press 컨트롤C ㅎㅎ`))
+
