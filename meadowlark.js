@@ -3,7 +3,8 @@
 const express = require('express')
 const expressHandlebars =require('express-handlebars')
 const app = express()
-
+//static 미들웨어 추가
+app.use(express.static(__dirname + '/public'))
 //핸들바 뷰 엔진 설정
 app.engine('handlebars', expressHandlebars({
   defaultLayout: 'main',
